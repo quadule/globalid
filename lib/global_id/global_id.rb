@@ -49,6 +49,10 @@ class GlobalID
     Locator.locate self, options
   end
 
+  def lazy
+    Lazy::Model.new self
+  end
+
   def model_class
     model = model_name.constantize
 

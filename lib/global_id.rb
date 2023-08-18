@@ -7,6 +7,7 @@ class GlobalID
   extend ActiveSupport::Autoload
 
   eager_autoload do
+    autoload :Lazy
     autoload :Locator
     autoload :Identification
     autoload :Verifier
