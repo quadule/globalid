@@ -32,6 +32,11 @@ class GlobalID
         SignedGlobalID.verifier = app.config.global_id.verifier
       end
 
+      ActiveSupport.on_load(:active_job) do
+        require 'global_id/lazy'
+        ActiveJob::Serializers.add_serializers GlobalID::Lazy::Serializer
+      end
+
       ActiveSupport.on_load(:active_record) do
         require 'global_id/identification'
         send :include, GlobalID::Identification

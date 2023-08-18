@@ -1,4 +1,8 @@
 require 'helper'
+require 'active_job/arguments'
+require 'active_job/serializers'
+
+ActiveJob::Serializers.add_serializers GlobalID::Lazy::Serializer
 
 class LazyTest < ActiveSupport::TestCase
   setup do
@@ -20,6 +24,14 @@ class LazyTest < ActiveSupport::TestCase
     assert_equal @model.id, @lazy.id
     assert_equal @gid, @lazy.to_global_id
     refute @lazy.lazy_model_loaded?
+  end
+
+  test 'lazy model serializes and deserializes without loading' do
+    serialized = ActiveJob::Arguments.serialize([@lazy]).first
+    deserialized = ActiveJob::Arguments.deserialize([serialized]).first
+    assert_equal @lazy, deserialized
+    refute @lazy.lazy_model_loaded?
+    refute deserialized.lazy_model_loaded?
   end
 
   test 'loads model when calling model methods' do

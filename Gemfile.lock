@@ -20,6 +20,9 @@ GEM
       erubi (~> 1.4)
       rails-dom-testing (~> 2.0)
       rails-html-sanitizer (~> 1.1, >= 1.2.0)
+    activejob (6.1.7.3)
+      activesupport (= 6.1.7.3)
+      globalid (>= 0.3.6)
     activemodel (6.1.7.3)
       activesupport (= 6.1.7.3)
     activesupport (6.1.7.3)
@@ -68,6 +71,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  activejob
   activemodel
   globalid!
   railties

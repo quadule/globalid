@@ -1,5 +1,6 @@
 source "https://rubygems.org"
 
+gem "activejob", github: "rails/rails", branch: "main"
 gem "activemodel", github: "rails/rails", branch: "main"
 gem "railties", github: "rails/rails", branch: "main"
 

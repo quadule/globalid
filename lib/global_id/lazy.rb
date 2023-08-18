@@ -3,5 +3,6 @@ class GlobalID
     extend ActiveSupport::Autoload
 
     autoload :Model
+    autoload :Serializer
   end
 end
